@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.pyc
+doc/
+.idea
+.cache
+temporary
+build
+KRCIT.egg-info

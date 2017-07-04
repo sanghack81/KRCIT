@@ -1,0 +1,9 @@
+pandas
+cython
+seaborn
+matplotlib
+pytest
+scipy
+networkx
+numpy
+joblib
