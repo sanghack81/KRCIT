@@ -83,6 +83,8 @@ def simple_random_test_inspect(seed, structure_random_p, n, mu, sd, independent,
 
     df = pd.concat([df0, df1, df2], ignore_index=True)
 
+    df.groupby(by=['type', 'cc']).transform(lambda x: (x - x.min()) / (x.max() - x.min()))
+
     seaborn.set(style='white', font_scale=1.3, palette=seaborn.color_palette('Set1', 4))
     plt.figure(figsize=[4, 4])
     g = seaborn.FacetGrid(df, col="type", hue='cc', hue_order=[0, 3, 2, 1], size=3, aspect=1)
@@ -93,6 +95,8 @@ def simple_random_test_inspect(seed, structure_random_p, n, mu, sd, independent,
         ax.set_title(title)
         ax.set_xticklabels([])
         ax.set_yticklabels([])
+        ax.set_xlabel('')
+        ax.set_ylabel('')
     plt.suptitle(titlestr)
     plt.savefig(fname, transparent=True, bbox_inches='tight', pad_inches=0.02)
     plt.close()
@@ -178,22 +182,6 @@ def generate_structure(num_entities_per_class, randomness=0.0, seed=None):
         count[x, y] += 1
 
     return skeleton
-
-
-def null_configurations2():
-    configurations = []
-    for mixup in np.linspace(0, 1, 10 + 1):
-        for mu in np.linspace(0, 1, 10 + 1):
-            configurations.append((mixup, mu))
-    return configurations
-
-
-def alternative_configurations2(random_structure, mu, vertex_kernel_hop=2):
-    configurations = []
-    n = 200
-    for slope in np.linspace(0, 0.7, 14 + 1):
-        configurations.append((random_structure, n, mu, 0.1, False, vertex_kernel_hop, slope))
-    return configurations
 
 
 def main():

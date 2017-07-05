@@ -42,7 +42,7 @@ def get_KZG(skeleton: RelationalSkeleton, vertex_kernel_hop, U, V, W=None, ignor
     gamma_x, gamma_y, gamma_z = infer_gammas(W, u_i_s, v_i_s, w_i_s)
 
     # -- compute kernel matrices
-    K_Z = normalize_by_diag(c_kernel_matrix(w_i_s, index_of, VK, 1, gamma_z, ignore_structure=ignore_gk)) if W is not None else np.ones((len(w_i_s), len(w_i_s)))
+    K_Z = normalize_by_diag(c_kernel_matrix(w_i_s, index_of, VK, 1, gamma_z, ignore_structure=ignore_gk)) if W is not None else np.ones((len(u_i_s), len(u_i_s)))
 
     if ignore_gk:
         K_ZG = K_Z
