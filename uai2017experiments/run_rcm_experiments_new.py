@@ -219,7 +219,7 @@ def main():
     num_trials = 200
     expected_size_per_entity_class = [200, 400, 600, 800]  # data
     max_degree_per_relationship = [1, 2, 3]  # data
-    graph_kernel_hops = [-1, 1, 2, 3, 4]  # test
+    graph_kernel_hops = [1, 2, 3, 4]  # test
     hypotheses = ['null', 'alternative']
 
     configs = set()

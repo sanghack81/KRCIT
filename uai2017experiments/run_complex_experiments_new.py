@@ -3,7 +3,8 @@ import time
 import warnings
 from os import mkdir
 from os.path import exists
-
+import matplotlib
+matplotlib.rcParams['text.usetex'] = True
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -12,7 +13,7 @@ from joblib import Parallel
 from joblib import delayed
 from pyrcds.domain import RelationalSchema, EntityClass, RelationshipClass, Cardinality
 from pyrcds.model import RelationalVariable, RelationalPath
-from tqdm import trange
+from tqdm import trange, tqdm
 
 from uai2017experiments.new_algos import ci_test_all
 from uai2017experiments.run_complex_experiments import generate_structure
@@ -84,6 +85,7 @@ def draw_complex_null():
             fig.set_size_inches(3.5, 3.15)
             cbar_ax = fig.add_axes([0.91, .25, .02, .5])
             sns.heatmap(matrix_val, vmin=0, vmax=20, ax=ax, cbar=True, cbar_ax=cbar_ax, xticklabels=[], yticklabels=[])
+            cbar_ax.set_yticklabels([])
             # ax.set(xlabel='non-randomness of relationship', ylabel='heterogeneity')
             ax.set(xlabel='heterogeneity', ylabel='non-randomness')
             ax.set_title(method)
@@ -174,7 +176,7 @@ def main():
         else:
             postfix = ''
 
-        # null hypothesis tests
+        # # null hypothesis tests
         if not exists('new_results/complex_null_hypothesis{}.csv'.format(postfix)):
             print('running complex experiments, null hypothesis')
             null_configurations = []
@@ -183,7 +185,7 @@ def main():
                     null_configurations.append([mixup, n, mu, sd, True, vertex_kernel_hop, 0.0])
 
             for seed in trange(20):
-                outss = Parallel(-1)(delayed(complex_random_test)(i * 20 + seed, *config) for i, config in enumerate(null_configurations))
+                outss = Parallel(6)(delayed(complex_random_test)(i * 20 + seed, *config) for i, config in enumerate(null_configurations))
                 with open('new_results/complex_null_hypothesis{}.csv'.format(postfix), 'a') as f:
                     for outs in outss:
                         print(*outs, sep=',', file=f)
@@ -197,7 +199,7 @@ def main():
                 alt_configurations.append((1., n, 1., sd, False, vertex_kernel_hop, slope))
 
             for seed in trange(200):
-                outss = Parallel(-1)(delayed(complex_random_test)(i * 200 + seed, *config) for i, config in enumerate(alt_configurations))
+                outss = Parallel(21)(delayed(complex_random_test)(i * 200 + seed, *config) for i, config in enumerate(alt_configurations))
                 with open('new_results/complex_alternative_hypothesis{}.csv'.format(postfix), 'a') as f:
                     for outs in outss:
                         print(*outs, sep=',', file=f)
@@ -207,4 +209,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    draw_complex_null()
+    draw_complex_alternative()
+    # main()

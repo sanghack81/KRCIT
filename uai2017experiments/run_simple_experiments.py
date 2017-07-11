@@ -12,6 +12,8 @@ from sdcit.sdcit import permuted
 from sdcit.utils import K2D
 
 from uai2017experiments.algo import get_KZG
+import matplotlib
+matplotlib.rcParams['text.usetex'] = True
 
 A, B, C, D = es = [EntityClass('A', 'X'), EntityClass('B', 'Y'), EntityClass('C', 'U'), EntityClass('D', 'V')]
 X, Y, U, V = next(iter(A.attrs)), next(iter(B.attrs)), next(iter(C.attrs)), next(iter(D.attrs))
@@ -199,7 +201,7 @@ def main():
                                        'dependent' if dependent else 'independent',
                                        'homo' if homo else 'hetero',
                                        '_bias' if biased else ''),
-                                   titlestr='{} & {}{}'.format('Alternative' if dependent else 'Null',
+                                   titlestr='{} and {}{}'.format('Alternative' if dependent else 'Null',
                                                                'Homogeneous' if homo else 'Heterogeneous',
                                                                ' (biased)' if biased else ' (randomized)'))
 

@@ -16,6 +16,8 @@ from tqdm import trange
 from uai2017experiments.new_algos import ci_test_all
 from uai2017experiments.run_simple_experiments import generate_values, generate_structure
 from uai2017experiments.utils import AUPC
+import matplotlib
+matplotlib.rcParams['text.usetex'] = True
 
 A, B, C, D = es = [EntityClass('A', 'X'), EntityClass('B', 'Y'), EntityClass('C', 'U'), EntityClass('D', 'V')]
 X, Y, U, V = next(iter(A.attrs)), next(iter(B.attrs)), next(iter(C.attrs)), next(iter(D.attrs))
@@ -81,6 +83,7 @@ def draw_simple_null():
         fig.set_size_inches(3.5, 3.15)
         cbar_ax = fig.add_axes([0.91, .25, .02, .5])
         sns.heatmap(matrix_val, vmin=0, vmax=20, ax=ax, cbar=True, cbar_ax=cbar_ax, xticklabels=[], yticklabels=[])
+        cbar_ax.set_yticklabels([])
         # ax.set(xlabel='non-randomness of relationship', ylabel='heterogeneity')
         ax.set(xlabel='heterogeneity', ylabel='non-randomness')
         ax.set_title(method)
@@ -205,4 +208,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    draw_simple_null()
+    draw_simple_alternative()
+    # main()
