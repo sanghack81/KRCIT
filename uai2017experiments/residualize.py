@@ -1,6 +1,6 @@
 import numpy as np
-from GPflow.gpr import GPR
-from GPflow.kernels import White, Linear
+from gpflow.gpr import GPR
+from gpflow.kernels import White, Linear
 from pyrcds.domain import RelationalSkeleton, SkItem
 from sdcit.utils import pdinv, rbf_kernel_median, residual_kernel, truncated_eigen, eigdec
 
