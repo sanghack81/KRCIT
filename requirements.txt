@@ -4,6 +4,6 @@ seaborn
 matplotlib
 pytest
 scipy
-networkx==1.11
+networkx
 numpy
 joblib
