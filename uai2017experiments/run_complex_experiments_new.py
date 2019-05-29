@@ -1,9 +1,9 @@
-import multiprocessing
-import time
 import warnings
 from os import mkdir
 from os.path import exists
+
 import matplotlib
+
 matplotlib.rcParams['text.usetex'] = True
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,7 +13,7 @@ from joblib import Parallel
 from joblib import delayed
 from pyrcds.domain import RelationalSchema, EntityClass, RelationshipClass, Cardinality
 from pyrcds.model import RelationalVariable, RelationalPath
-from tqdm import trange, tqdm
+from tqdm import trange
 
 from uai2017experiments.new_algos import ci_test_all
 from uai2017experiments.run_complex_experiments import generate_structure

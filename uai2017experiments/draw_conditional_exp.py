@@ -47,13 +47,13 @@ cur_df_null = cur_df_null.groupby(by=['n', 'method', 'hypothesis']).aggregate(ty
 cur_df_null['rr'] = 0
 cur_df_alt['rr'] = 1
 df_con = pd.concat([cur_df_null, cur_df_alt], ignore_index=True)
-g = sns.factorplot(x='n', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend=False);
+g = sns.factorplot(x='n', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend=False)
 g.set_titles('')
-g.axes.flat[0].set_ylim(0.5, 1.01);
-g.axes.flat[0].set_ylabel('AUPC');
-g.axes.flat[1].set_ylim(0.0, 0.4);
-g.axes.flat[1].set_ylabel('type-I error rate');
-g.axes.flat[1].set_xlabel('no. of entities per class');
+g.axes.flat[0].set_ylim(0.5, 1.01)
+g.axes.flat[0].set_ylabel('AUPC')
+g.axes.flat[1].set_ylim(0.0, 0.4)
+g.axes.flat[1].set_ylabel('type-I error rate')
+g.axes.flat[1].set_xlabel('no. of entities per class')
 g.axes.flat[1].set_yticks([0.0, 0.1, 0.2, 0.3, 0.4], minor=False)
 plt.savefig(expanduser("~/Dropbox/research/2014 rcm/workspace/python/KRCIT/uai2017experiments/new_figures/conditional_by_n.pdf"), transparent=True, bbox_inches='tight', pad_inches=0.02)
 plt.close()
@@ -67,13 +67,13 @@ cur_df_null = cur_df_null.groupby(by=['maxrel', 'method', 'hypothesis']).aggrega
 cur_df_null['rr'] = 0
 cur_df_alt['rr'] = 1
 df_con = pd.concat([cur_df_null, cur_df_alt], ignore_index=True)
-g = sns.factorplot(x='maxrel', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend=False);
+g = sns.factorplot(x='maxrel', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend=False)
 g.set_titles('')
-g.axes.flat[0].set_ylim(0.5, 1.01);
-g.axes.flat[0].set_ylabel('AUPC');
-g.axes.flat[1].set_ylim(0.0, 0.4);
-g.axes.flat[1].set_ylabel('type-I error rate');
-g.axes.flat[1].set_xlabel('max no. of relationships');
+g.axes.flat[0].set_ylim(0.5, 1.01)
+g.axes.flat[0].set_ylabel('AUPC')
+g.axes.flat[1].set_ylim(0.0, 0.4)
+g.axes.flat[1].set_ylabel('type-I error rate')
+g.axes.flat[1].set_xlabel('max no. of relationships')
 g.axes.flat[1].set_yticks([0.0, 0.1, 0.2, 0.3, 0.4], minor=False)
 plt.savefig(expanduser("~/Dropbox/research/2014 rcm/workspace/python/KRCIT/uai2017experiments/new_figures/conditional_by_maxrel.pdf"), transparent=True, bbox_inches='tight', pad_inches=0.02)
 plt.close()
@@ -94,13 +94,13 @@ cur_df_alt.loc[cur_df_alt.method == 'KCIT', 'p-value'] = np.mean(cur_df_alt[cur_
 cur_df_null['rr'] = 0
 cur_df_alt['rr'] = 1
 df_con = pd.concat([cur_df_null, cur_df_alt], ignore_index=True)
-g = sns.factorplot(x='hops', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend_out=True);
+g = sns.factorplot(x='hops', y='p-value', hue='method', row='rr', data=df_con, row_order=[1, 0], size=sizesize, aspect=aspectaspect, hue_order=hue_order, kind='bar', sharey=False, legend_out=True)
 g.set_titles('')
-g.axes.flat[0].set_ylim(0.5, 1.01);
-g.axes.flat[0].set_ylabel('AUPC');
-g.axes.flat[1].set_ylim(0.0, 0.4);
-g.axes.flat[1].set_ylabel('type-I error rate');
-g.axes.flat[1].set_xlabel('no. of hops for contexts');
+g.axes.flat[0].set_ylim(0.5, 1.01)
+g.axes.flat[0].set_ylabel('AUPC')
+g.axes.flat[1].set_ylim(0.0, 0.4)
+g.axes.flat[1].set_ylabel('type-I error rate')
+g.axes.flat[1].set_xlabel('no. of hops for contexts')
 g.axes.flat[1].set_yticks([0.0, 0.1, 0.2, 0.3, 0.4], minor=False)
 plt.savefig(expanduser("~/Dropbox/research/2014 rcm/workspace/python/KRCIT/uai2017experiments/new_figures/conditional_by_hops.pdf"), transparent=True, bbox_inches='tight', pad_inches=0.02)
 plt.close()

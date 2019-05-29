@@ -132,7 +132,7 @@ def kde_based_rbf_gamma(D, nn=5, cutoff=None, init_x=1.0, repeat=5, seed=None, s
     if callable(summarizer):
         return summarizer(results)
     elif isinstance(summarizer, float):
-        assert 0.0 <= float < 1.0
+        assert 0.0 <= summarizer < 1.0
         return results[min(int(round(repeat * summarizer)), repeat - 1)]
     else:
         raise ValueError('unknown summarizer')

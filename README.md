@@ -18,19 +18,16 @@ An easy way to install them is using [anaconda](https://www.continuum.io/downloa
 
 ```
 cd ~/anaconda/bin
-./conda create --name your_env_name python=3.6 --yes
+./conda create --name your_env_name python=3.7 --yes
 source activate your_env_name
 conda install six numpy wheel scipy matplotlib pandas  --yes 
-conda install -c conda-forge tensorflow --yes
+conda install tensorflow
 cd ~/Downloads
-git clone https://github.com/GPflow/GPflow
 git clone https://github.com/sanghack81/pyGK
 git clone https://github.com/sanghack81/SDCIT
 git clone https://github.com/sanghack81/pyRCDs
 git clone https://github.com/sanghack81/KRCIT
-cd GPflow
-python3 setup.py install
-cd ../SDCIT
+cd SDCIT
 conda install --yes --file requirements.txt
 ./setup.sh
 python3 setup.py install
@@ -48,7 +45,7 @@ Test whether all required packages are installed correctly.
 
 ```python
 import tensorflow
-import GPflow
+import gpflow
 import pygk
 from sdcit.sdcit import SDCIT
 import pyrcds
